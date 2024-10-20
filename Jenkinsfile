@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        any {
             image 'node:14'  // Use the official Node.js 14 Docker image (or specify the version you need)
             args '-v /var/run/docker.sock:/var/run/docker.sock'  // Allow Docker in Docker if needed
         }
