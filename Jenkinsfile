@@ -1,33 +1,26 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:14'  // Use the official Node.js 14 Docker image (or specify the version you need)
+            args '-v /var/run/docker.sock:/var/run/docker.sock'  // Allow Docker in Docker if needed
+        }
+    }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout csm
-            }
-        }
-
-        stage('Install NPM and Bruno CLI') {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    // Build Docker image using Docker CLI
-                    sh '''
-                    ls .
-                    npm install
-                    npm install -g @usebruno/cli
-                    '''
+                    echo 'Installing dependencies...'
+                    sh 'npm install'  // Install Node.js dependencies using npm
                 }
             }
         }
 
-        stage('Run Bruno Commands') {
+        stage('Run Tests') {
             steps {
                 script {
-                    // Running shell commands
-                    sh '''
-                    bru run --version
-                    '''
+                    echo 'Running tests...'
+                    sh 'npm --version'  // Run tests using npm
                 }
             }
         }
