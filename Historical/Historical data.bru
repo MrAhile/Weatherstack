@@ -1,0 +1,27 @@
+meta {
+  name: Historical data
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.weatherstack.com/historical?query=New York&historical_date=2015-01-21&hourly=1
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: New York
+  historical_date: 2015-01-21
+  hourly: 1
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  To look up historical weather data all the way back to 2008, simply pass one date of your choice (later than July 2008) or multiple semicolon-separated dates to the weatherstack API's `historical` endpoint using the `historical_date` parameter.
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Autocomplete
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.weatherstack.com/autocomplete?query=london
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: london
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  The weatherstack API's location `autocomplete` endpoint can be used to pinpoint one or more specific locations and their identifying response objects with the aim of later passing them to a weather data endpoint. In our example below, we are looking for London, United Kingdom.
+  
+  A successful API request will return one or multiple results that match your search query. In our example, the first array object (London, United Kingdom) contains the correct result. Now that we have our identifying response objects of the target location we were looking for, we can make sure that the correct location is used by other API endpoints by using one of the available location identifiers (ideally: `lat` and `lon`) for upcoming queries.
+}

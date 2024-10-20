@@ -1,0 +1,27 @@
+meta {
+  name: Historical time series
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.weatherstack.com/historical?query=New York&historical_date_start=2015-01-21&historical_date_end=2015-01-25
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: New York
+  historical_date_start: 2015-01-21
+  historical_date_end: 2015-01-25
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  The `historical` endpoint is also capable of processing historical time-series results if the parameters `historical_date_start` and `historical_date_end` are set to valid dates.
+}

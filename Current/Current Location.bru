@@ -1,0 +1,25 @@
+meta {
+  name: Current Location
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.weatherstack.com/current?query=New Delhi
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: New Delhi
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  \`Current\` endpoint let you fetch the weather stats of the metioned location in the \`query\` parameter.
+}

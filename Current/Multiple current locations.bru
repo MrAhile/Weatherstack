@@ -1,0 +1,25 @@
+meta {
+  name: Multiple current locations
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.weatherstack.com/current?query=London;Singapur;Shanghai
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: London;Singapur;Shanghai
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  To make use of the API's bulk query capability, you can also pass multiple semicolon-separated locations to the API.
+}

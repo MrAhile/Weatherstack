@@ -1,0 +1,26 @@
+meta {
+  name: forecast data
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.weatherstack.com/forecast?query=New York&forecast_days=7
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: New York
+  forecast_days: 7
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  The weatherstack is capable of returning weather forecast data for up to 14 days into the future. To get weather forecasts, simply use the API's `forecast` endpoint and define your preferred number of forecast days using the `forecast_days` parameter.
+}

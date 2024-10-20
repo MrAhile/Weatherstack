@@ -1,0 +1,33 @@
+meta {
+  name: Location Identifiers
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://api.weatherstack.com/current?query=40.7831,-73.9712
+  body: none
+  auth: apikey
+}
+
+params:query {
+  query: 40.7831,-73.9712
+}
+
+auth:apikey {
+  key: access_key
+  value: {{access_key}}
+  placement: header
+}
+
+docs {
+  Aside from simply passing the name of a city, there are multiple other ways of passing a location to the API:
+  
+  | Definition | Example | Description |
+  | --- | --- | --- |
+  | Location Name | `query = New York` | The standard way of passing a location name to the API. |
+  | UK/Canada/US ZIP Code | `query = 99501` | Pass a UK/Canada/US ZIP code to the API and auto-detect the associated location. |
+  | Coordinates (Lat/Lon) | `query = 40.7831,-73.9712` | Pass latitude and longitude coordinates to the API and auto-detect the associated location. |
+  | IP Address | `query = 153.65.8.20` | Pass an IP address to the API and auto-detect the associated location. |
+  | IP Address (Auto-Fetch) | `query = fetch:ip` | Pass `fetch:ip` to the API in order to auto-detect the requester IP address and location. |
+}
