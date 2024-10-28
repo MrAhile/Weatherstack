@@ -25,7 +25,6 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    sh 'npm --version'  // Run tests using npm
                 }
             }
         }
