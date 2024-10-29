@@ -7,26 +7,19 @@ pipeline {
         }
 
     stages {
-        stage('Check Version') {
-            steps {
-                script {
-                    docker.image('alpine/bruno').inside('--entrypoint=/bin/bash')
-                    {
-                        echo 'Checking Version...'
-                        sh '''
-                        npm -version
-                        bru -version
-                        '''
-                        }
-                }
-            }
-        }
-
         stage('Run Tests') {
             steps {
                 script {
                     echo 'Running tests...'
-                    sh 'npm --version'  // Run tests using npm
+                    echo '${fichierPath}'
+                }
+            }
+        }
+
+        stage('Run Build') {
+            steps {
+                script {
+                    echo 'Running Builds...'
                 }
             }
         }
